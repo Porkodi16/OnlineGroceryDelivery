@@ -48,21 +48,21 @@ public class AddressController {
 	}
 	
 	
-	@GetMapping("/{custId}")
+	@GetMapping("/{id}")
 	
-	public Address getAddressById(@PathVariable("custId") long custId) {
-		return addressService.getAddressById(custId);
+	public Address getAddressById(@PathVariable("id") long id) {
+		return addressService.getAddressById(id);
 	}
 	
-	@PutMapping("/{custId}")
+	@PutMapping("/{id}")
 	
-	public  Address updateAddress(@PathVariable("custId") long custId , @RequestBody Address address) {
-		return addressService.updateAddress(custId,address);
+	public  Address updateAddress(@PathVariable("id") long id , @RequestBody Address address) {
+		return addressService.updateAddress(id,address);
 	}
 		
-	@DeleteMapping("/{custId}") 
-	public ResponseEntity<String>deleteAddress(@PathVariable("custId") long custId) {
-		return new ResponseEntity<String> (addressService.deleteAddress(custId),HttpStatus.OK);
+	@DeleteMapping("/{id}") 
+	public ResponseEntity<String>deleteAddress(@PathVariable("id") long id) {
+		return new ResponseEntity<String> (addressService.deleteAddress(id),HttpStatus.OK);
 
 
 	}

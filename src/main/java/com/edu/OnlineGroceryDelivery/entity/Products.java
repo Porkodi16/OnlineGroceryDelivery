@@ -71,6 +71,28 @@ public class Products implements Serializable {
 		this.quantity_of_Product = quantity_of_Product;
 	}
 
+	@Override
+	public String toString() {
+		return "Products [productId=" + productId + ", productName=" + productName + ", productCategory="
+				+ productCategory + ", productPrice=" + productPrice + ", quantity_of_Product=" + quantity_of_Product
+				+ ", order=" + order + "]";
+	}
+
+	public Products() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Products(long productId, String productName, String productCategory, float productPrice,
+			int quantity_of_Product) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productCategory = productCategory;
+		this.productPrice = productPrice;
+		this.quantity_of_Product = quantity_of_Product;
+	}
+
 	public List<Order> getOrder() {
 		return order;
 	}
@@ -89,18 +111,7 @@ public class Products implements Serializable {
 		this.quantity_of_Product = quantity_of_Product;
 		this.order = order;
 	}
-
-	public Products() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "Products [productId=" + productId + ", productName=" + productName + ", productCategory="
-				+ productCategory + ", productPrice=" + productPrice + ", quantity_of_Product=" + quantity_of_Product
-				+ ", order=" + order + "]";
-	}
-
+	
 	
 }
+

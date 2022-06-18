@@ -86,6 +86,12 @@ public String deleteCustomer(long custId) {
 	return "Record is Deleted Successfully";
 }
 
+@Override
+public List<Customer> getCustomerByFirstName(String firstName) {
+	// TODO Auto-generated method stub
+	return customerRepository.getCustomerByFirstName(firstName);
+}
+
 
 
 

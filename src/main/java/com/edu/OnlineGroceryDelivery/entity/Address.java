@@ -35,14 +35,6 @@ public class Address  {
 	private String streetName;
 	private String city;
 	private long pinCode;
-	
-	
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
 	public long getId() {
 		return id;
 	}
@@ -73,6 +65,29 @@ public class Address  {
 	public void setPinCode(long pinCode) {
 		this.pinCode = pinCode;
 	}
+	@Override
+	public String toString() {
+		return "Address [customer=" + customer + ", id=" + id + ", houseNo=" + houseNo + ", streetName=" + streetName
+				+ ", city=" + city + ", pinCode=" + pinCode + "]";
+	}
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Address(long id, long houseNo, String streetName, String city, long pinCode) {
+		super();
+		this.id = id;
+		this.houseNo = houseNo;
+		this.streetName = streetName;
+		this.city = city;
+		this.pinCode = pinCode;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	public Address(Customer customer, long id, long houseNo, String streetName, String city, long pinCode) {
 		super();
 		this.customer = customer;
@@ -82,15 +97,9 @@ public class Address  {
 		this.city = city;
 		this.pinCode = pinCode;
 	}
-	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "Address [customer=" + customer + ", id=" + id + ", houseNo=" + houseNo + ", streetName=" + streetName
-				+ ", city=" + city + ", pinCode=" + pinCode + "]";
-	}
+	
 	
 	
 }
+	
+	

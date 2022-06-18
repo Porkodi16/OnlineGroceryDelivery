@@ -83,6 +83,28 @@ public class Order  implements Serializable {
 	}
 
 
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", overallTotal=" + overallTotal + ", paymentMode=" + paymentMode
+				+ ", productCount=" + productCount + ", customer=" + customer + ", products=" + products + "]";
+	}
+
+
+	public Order(long orderId, long overallTotal, String paymentMode, long productCount) {
+		super();
+		this.orderId = orderId;
+		this.overallTotal = overallTotal;
+		this.paymentMode = paymentMode;
+		this.productCount = productCount;
+	}
+
+
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -114,17 +136,6 @@ public class Order  implements Serializable {
 		this.products = products;
 	}
 
-
-	public Order() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	@Override
-	public String toString() {
-		return "Order [orderId=" + orderId + ", overallTotal=" + overallTotal + ", paymentMode=" + paymentMode
-				+ ", productCount=" + productCount + ", customer=" + customer + ", products=" + products + "]";
-	}
-
 }
+	
+
