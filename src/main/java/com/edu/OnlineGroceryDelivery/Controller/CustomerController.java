@@ -64,15 +64,6 @@ public class CustomerController {
 		return new ResponseEntity<String> (customerService.deleteCustomer(custId),HttpStatus.OK);
 	
 	}
-	
-	
-	@GetMapping("/GetByFirstName/{firstName}")
-	public List<Customer> getCustomerByFirstName(@PathVariable("firstName")String firstName) {
-		return customerService.getCustomerByFirstName(firstName);
-	}
-
-
-	
 	}
 	
 

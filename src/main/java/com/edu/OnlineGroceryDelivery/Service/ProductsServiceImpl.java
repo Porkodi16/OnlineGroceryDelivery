@@ -2,15 +2,16 @@
 package com.edu.OnlineGroceryDelivery.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import com.edu.OnlineGroceryDelivery.Exception.*;
 import com.edu.OnlineGroceryDelivery.Repository.ProductsRepository;
 import com.edu.OnlineGroceryDelivery.entity.Customer;
 import com.edu.OnlineGroceryDelivery.entity.Products;
-import com.edu.OnlineGroceryDelivery.ResourceNotFoundException.*;
 
 @Service
 
@@ -41,22 +42,40 @@ public class ProductsServiceImpl implements ProductsService {
 	public Products getProductsById(long productId) {
 		// TODO Auto-generated method stub
 		
-		Products products=new Products();
+	/*	Products products=new Products();
 		
 		products=productsRepository.findById(productId).orElseThrow(
 				()-> new ResourceNotFoundException("Products" ,"productId" ,productId));
 		
 		
 		return products;
+*/
+		Optional<Products> products=productsRepository.findById(productId);
+		if(products.isPresent()) {
+			return  products.get();
+		}
+		
+		else {
+			throw new GivenIdNotFoundException();
+		}
+		}
 
 
 		
-	}
+	
 
 	@Override
 	public List<Products> getProductsList() {
 		// TODO Auto-generated method stub
-		return productsRepository.findAll();
+		
+		List<Products> prod=productsRepository.findAll();
+		
+		if (prod.isEmpty())
+			throw new NoProductsFoundException();
+		else
+			return prod;
+
+		//return productsRepository.findAll();
 	}
 
 	@Override
@@ -93,8 +112,5 @@ public class ProductsServiceImpl implements ProductsService {
 		return "Record is Deleted Successfully";
 
 	}
-
-	
-	
 
 }

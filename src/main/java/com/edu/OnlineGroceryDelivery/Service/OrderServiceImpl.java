@@ -2,13 +2,14 @@
 package com.edu.OnlineGroceryDelivery.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edu.OnlineGroceryDelivery.Exception.*;
 import com.edu.OnlineGroceryDelivery.Repository.OrderRepository;
 import com.edu.OnlineGroceryDelivery.entity.Order;
-import com.edu.OnlineGroceryDelivery.ResourceNotFoundException.*;
 
 @Service
 public class OrderServiceImpl  implements OrderService{
@@ -35,18 +36,39 @@ public class OrderServiceImpl  implements OrderService{
 	@Override
 	public List<Order> getOrderList() {
 		// TODO Auto-generated method stub
-		return orderRepository.findAll();
+		List<Order> ord=orderRepository.findAll();
+		
+		if (ord.isEmpty())
+			throw new NoRecordFoundException();
+		else
+			return ord;
+		//return orderRepository.findAll();
+
+
 	}
 
 	@Override
 	public Order getOrderById(long orderId) {
 		// TODO Auto-generated method stub
 		
-		Order order=new Order();
+/*		Order order=new Order();
 		order =orderRepository.findById(orderId).orElseThrow (
 				() -> new ResourceNotFoundException("Order","orderId" ,orderId));
 		return order;
-	}
+	*/
+		
+		Optional<Order> order=orderRepository.findById(orderId);
+		if(order.isPresent()) {
+			return  order.get();
+		}
+		
+		else {
+			throw new GivenIdNotFoundException();
+		}
+		}
+
+		
+	
 
 	@Override
 	public Order updateOrder(long orderId, Order order) {

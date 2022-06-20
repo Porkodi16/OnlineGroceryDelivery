@@ -10,10 +10,10 @@ public interface AddressService {
 
 	List<Address> getAddressList();
 
-	Address getAddressById(long custId);
+	Address getAddressById(long id);
 
-	Address updateAddress(long custId, Address address);
+	Address updateAddress(long id, Address address);
 
-	String deleteAddress(long custId);
+	String deleteAddress(long id);
 
 }

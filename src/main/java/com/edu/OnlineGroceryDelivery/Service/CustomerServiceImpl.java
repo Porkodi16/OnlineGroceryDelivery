@@ -1,13 +1,16 @@
 package com.edu.OnlineGroceryDelivery.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edu.OnlineGroceryDelivery.Exception.GivenIdNotFoundException;
+import com.edu.OnlineGroceryDelivery.Exception.NoRecordFoundException;
+import com.edu.OnlineGroceryDelivery.Exception.ResourceNotFoundException;
 import com.edu.OnlineGroceryDelivery.Repository.CustomerRepository;
 import com.edu.OnlineGroceryDelivery.entity.Customer;
-import com.edu.OnlineGroceryDelivery.ResourceNotFoundException.ResourceNotFoundException;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -31,13 +34,21 @@ public Customer saveCustomer(Customer customer) {
 @Override
 public List<Customer> getCustomerList() {
 	// TODO Auto-generated method stub
-	return customerRepository.findAll();
+	List<Customer> custom=customerRepository.findAll();
+	
+	if (custom.isEmpty())
+		throw new NoRecordFoundException();
+	else
+		return custom;
+	
+	//return customerRepository.findAll();
+
 }
 
 @Override
 public Customer getCustomerById(long custId) {
 	
-	Customer customer=new Customer();
+	/*Customer customer=new Customer();
 	
 	customer=customerRepository.findById(custId).orElseThrow(
 			()-> new ResourceNotFoundException("Customer" ,"custId" ,custId));
@@ -45,7 +56,18 @@ public Customer getCustomerById(long custId) {
 	
 	return customer;
 
-}
+}*/
+	
+	Optional<Customer> customer=customerRepository.findById(custId);
+	if(customer.isPresent()) {
+		return  customer.get();
+	}
+	
+	else {
+		throw new GivenIdNotFoundException();
+	}
+	}
+	
 
 
 
@@ -56,6 +78,8 @@ public Customer updateCustomer(long custId, Customer customer) {
 	Customer cust=new Customer();
 	cust=customerRepository.findById(custId).orElseThrow (
 		()-> new ResourceNotFoundException("Customer" , "custId",custId));
+	
+	
 	
 	
 	cust.setCustId(customer.getCustId());
@@ -86,11 +110,6 @@ public String deleteCustomer(long custId) {
 	return "Record is Deleted Successfully";
 }
 
-@Override
-public List<Customer> getCustomerByFirstName(String firstName) {
-	// TODO Auto-generated method stub
-	return customerRepository.getCustomerByFirstName(firstName);
-}
 
 
 

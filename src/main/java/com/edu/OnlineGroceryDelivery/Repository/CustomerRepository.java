@@ -15,9 +15,6 @@ public interface CustomerRepository  extends JpaRepository<Customer , Long>{
 
 	Optional<Customer> findBycontactNo(String string);
 
-	@Query("select e from customerTbl c where c.firstName =:firstName") // jpQl 
-
-	List<Customer> getCustomerByFirstName(String firstName);
 
 
 

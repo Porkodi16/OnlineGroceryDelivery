@@ -1,5 +1,5 @@
 
-package com.edu.OnlineGroceryDelivery.ResourceNotFoundException;
+package com.edu.OnlineGroceryDelivery.Exception;
 
 
 
