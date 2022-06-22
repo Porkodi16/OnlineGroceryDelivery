@@ -111,10 +111,17 @@ public String deleteCustomer(long custId) {
 }
 
 
+@Override
+public List<Customer> getCustomerByFirstName(String firstName) {
+	// TODO Auto-generated method stub
+	return customerRepository.getCustomerByFirstName(firstName);
+}
 
-
-
-	
+@Override
+public List<Customer> getCustomerByLastName(String lastName) {
+	// TODO Auto-generated method stub
+	return customerRepository.getCustomerByLastName(lastName);
+}
 
 }
 

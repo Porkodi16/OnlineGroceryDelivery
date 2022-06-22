@@ -113,4 +113,10 @@ public class ProductsServiceImpl implements ProductsService {
 
 	}
 
+	@Override
+	public List<Products> getProductsByProductName(String productName) {
+		// TODO Auto-generated method stub
+		return productsRepository.getProductsByProductName(productName);
+	}
+
 }

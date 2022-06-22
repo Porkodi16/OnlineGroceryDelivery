@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.OnlineGroceryDelivery.Service.ProductsService;
+import com.edu.OnlineGroceryDelivery.entity.Customer;
 import com.edu.OnlineGroceryDelivery.entity.Products;
 
 @RestController
@@ -64,6 +65,12 @@ public class ProductsController {
 		return new ResponseEntity<String> (productsService.deleteProducts(productId),HttpStatus.OK);
 	
 	}
+	
+	@GetMapping("/GetByProductName/{productName}")
+	public List<Products> getProductsByProductName(@PathVariable("productName")String productName) {
+		return productsService.getProductsByProductName(productName);
+	}
+
 
 
 
