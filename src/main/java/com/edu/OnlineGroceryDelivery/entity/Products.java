@@ -4,12 +4,16 @@ package com.edu.OnlineGroceryDelivery.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,12 +26,15 @@ public class Products implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	
 	private long productId;
+	@NotNull
+	@NotBlank(message="Product Name is Mandatory")
 	private String productName;
 	private String productCategory;
 	private float productPrice;
+	@Size(min=1 , max=100)
 	private int quantity_of_Product;
 	
-	@ManyToMany(mappedBy="products")
+	@ManyToMany(mappedBy="products" , cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("products")
 	private List<Order>order;
 

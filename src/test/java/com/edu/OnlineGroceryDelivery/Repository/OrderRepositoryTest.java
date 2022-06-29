@@ -30,10 +30,10 @@ public class OrderRepositoryTest {
 	
 	
 	
-@Test
+ @Test
 public void saveOrderTest() {/// testcase 
 		
-		Order order= orderRepository.save(new Order(30,1500,"Paytm",1));
+		Order order= orderRepository.save(new Order(67,700,"Paytm",1));
 
 		
 		
@@ -47,9 +47,9 @@ public void saveOrderTest() {/// testcase
 
 @Test
 public void getOrderTest() {
-	Order order = orderRepository.findById(41L).get();
+	Order order = orderRepository.findById(72L).get();
 	
-	Assertions.assertThat(order.getOrderId()).isEqualTo(41L);
+	Assertions.assertThat(order.getOrderId()).isEqualTo(72L);
 
 }
 
@@ -62,7 +62,7 @@ public void getOrderListTest() {
 }
 @Test
 public void updateOrderTest() {
-	Order order = orderRepository.findById(41L).get();
+	Order order = orderRepository.findById(73L).get();
 	
 	order.setPaymentMode("Gpay");
 	
@@ -76,11 +76,11 @@ public void updateOrderTest() {
  @Test 
 
 public  void deleteOrderTest() {
-	Order orde = orderRepository.findById(7L).get();
+	Order orde = orderRepository.findById(81L).get();
 	orderRepository.delete(orde);
 	
 	Order order =null;
-	Optional<Order> orde1 = orderRepository.findByPaymentMode("Gpay");
+	Optional<Order> orde1 = orderRepository.findByPaymentMode("Prepaid Cards");
 	if(orde1.isPresent()) {
 		order = orde1.get();// null
 	}

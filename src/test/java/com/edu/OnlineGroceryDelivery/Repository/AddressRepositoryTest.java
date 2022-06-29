@@ -31,10 +31,10 @@ public class AddressRepositoryTest {
 	
 	
 	
-@Test
+ @Test
 public void saveAddressTest() {/// testcase 
 		
-		Address address = addressRepository.save(new Address( 4,10,"Sea Area","Chennai",603451));
+		Address address = addressRepository.save(new Address( 12,880,"Sea Area","Chennai",603451));
 		
 	
         Assertions.assertThat(address.getId()).isGreaterThan(0);
@@ -62,7 +62,7 @@ public void getAddressListTest() {
 	
 	@Test
 	public void updateAddressTest() {
-		Address address = addressRepository.findById(3L).get();
+		Address address = addressRepository.findById(7L).get();
 		
 		address.setStreetName("Ganga");
 				
@@ -81,16 +81,16 @@ public void getAddressListTest() {
 @Test
 
 public void deleteAddressTest() {
-	Address addre = addressRepository.findById(6L).get();
+	Address addre = addressRepository.findById(8L).get();
 	addressRepository.delete(addre);
 	
 	Address address =null;
-	Optional<Address> add1 = addressRepository.findByStreetName("Sea Area");
+	Optional<Address> add1 = addressRepository.findByHouseNo(1);
 	if(add1.isPresent()) {
 		address = add1.get();// null
 	}
 	
-	Assertions.assertThat(add1).isNull();
+	Assertions.assertThat(address).isNull();
 	
 }
 	

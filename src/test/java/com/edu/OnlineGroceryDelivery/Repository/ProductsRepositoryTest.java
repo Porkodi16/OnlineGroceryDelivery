@@ -30,10 +30,10 @@ public class ProductsRepositoryTest {
 	
 	
 	
-@Test
+ @Test
 public void saveProductsTest() {/// testcase 
 		
-		Products products = productsRepository.save(new Products(35, "apple","Fruits",2000,2));
+		Products products = productsRepository.save(new Products(35, "DryFruits","Fruits",200,1));
 		
 	
         Assertions.assertThat(products.getProductId()).isGreaterThan(0);
@@ -45,9 +45,9 @@ public void saveProductsTest() {/// testcase
 
 @Test
 public void getProductsTest() {
-	Products products= productsRepository.findById(51L).get();
+	Products products= productsRepository.findById(31L).get();
 	
-	Assertions.assertThat(products.getProductId()).isEqualTo(51L);
+	Assertions.assertThat(products.getProductId()).isEqualTo(31L);
 
 }
 
@@ -60,29 +60,27 @@ public void getProductsListTest() {
 }
 @Test
 public void updateProductsTest() {
-	Products products = productsRepository.findById(51L).get();
+	Products products = productsRepository.findById(30L).get();
 	
-	products.setProductName("Orange");
+	products.setProductName("Kiwi");
 	
 	Products updated = productsRepository.save(products); 
 	
 	
-	Assertions.assertThat(updated.getProductName()).isEqualTo("Orange");
+	Assertions.assertThat(updated.getProductName()).isEqualTo("Kiwi");
 
 	
 }
 
 
-
 @Test
 
 public void deleteProductsTest() {
-	Products prod= productsRepository.findById(49L).get();
+	Products prod= productsRepository.findById(89L).get();
 	productsRepository.delete(prod);
 	
 	Products products =null;
-	Optional<Products> pr1 = productsRepository.findByProductName("apple");
-//	Optional<Products> pr1 = productsRepository.findByProductId(48L);
+	Optional<Products> pr1 = productsRepository.findByProductName("Cherry");
 
 	if(pr1.isPresent()) {
 		products = pr1.get();// null

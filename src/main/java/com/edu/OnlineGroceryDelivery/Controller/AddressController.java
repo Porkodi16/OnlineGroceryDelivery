@@ -3,6 +3,8 @@ package com.edu.OnlineGroceryDelivery.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +39,7 @@ public class AddressController {
 	
 	@PostMapping
 	
-	public ResponseEntity<Address> saveAddress(@RequestBody Address address) {
+	public ResponseEntity<Address> saveAddress(@Valid @RequestBody Address address) {
 		return new ResponseEntity<Address> (addressService.saveAddress(address) , HttpStatus.CREATED);
 	}
 	

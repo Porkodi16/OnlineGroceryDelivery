@@ -10,6 +10,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
 	Optional<Order> findByPaymentMode(String string);
 
+	Optional<Order> findByOrderId(long l);
+
 
 
 }

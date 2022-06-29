@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,6 +31,7 @@ public class Order  implements Serializable {
 
 	private long orderId;
 	private long overallTotal;
+	@NotBlank(message="PaymentMode is Mandatory")
 	private String paymentMode;
 	private long productCount;
 	

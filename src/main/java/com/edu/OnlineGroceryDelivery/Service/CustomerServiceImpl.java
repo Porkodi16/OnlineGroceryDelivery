@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.OnlineGroceryDelivery.Exception.GivenIdNotFoundException;
+import com.edu.OnlineGroceryDelivery.Exception.NameNotFoundException;
 import com.edu.OnlineGroceryDelivery.Exception.NoRecordFoundException;
 import com.edu.OnlineGroceryDelivery.Exception.ResourceNotFoundException;
 import com.edu.OnlineGroceryDelivery.Repository.CustomerRepository;
@@ -114,16 +115,40 @@ public String deleteCustomer(long custId) {
 @Override
 public List<Customer> getCustomerByFirstName(String firstName) {
 	// TODO Auto-generated method stub
-	return customerRepository.getCustomerByFirstName(firstName);
+	//return customerRepository.getCustomerByFirstName(firstName);
+	
+	List<Customer> customer=customerRepository.getCustomerByFirstName(firstName);
+	if(customer.isEmpty())
+	{
+		throw new NameNotFoundException();
+	}
+	else
+	{
+		return customer;
+	}
 }
 
 @Override
 public List<Customer> getCustomerByLastName(String lastName) {
 	// TODO Auto-generated method stub
-	return customerRepository.getCustomerByLastName(lastName);
+	//return customerRepository.getCustomerByLastName(lastName);
+	
+	List<Customer> customer =customerRepository.getCustomerByLastName(lastName);
+	if(customer.isEmpty())
+	{
+		throw new NameNotFoundException();
+
+	}
+	else
+	{
+	
+return customer;
+	}
 }
 
+
 }
+
 
 
 

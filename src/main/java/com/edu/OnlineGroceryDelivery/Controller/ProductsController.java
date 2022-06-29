@@ -3,6 +3,8 @@ package com.edu.OnlineGroceryDelivery.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class ProductsController {
 
 	@PostMapping
 	
-	 	public ResponseEntity<Products> saveGroceryItem(@RequestBody Products products) {
+	 	public ResponseEntity<Products> saveGroceryItem(@Valid @RequestBody Products products) {
 		return new ResponseEntity<Products> (productsService.saveProducts(products) , HttpStatus.CREATED);
 	}
 	

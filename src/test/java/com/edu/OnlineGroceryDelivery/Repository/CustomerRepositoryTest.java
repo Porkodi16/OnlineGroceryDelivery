@@ -27,11 +27,10 @@ public class CustomerRepositoryTest {
 	private CustomerRepository customerRepository;
 	
 	
-	
-@Test
+	@Test
 public void saveCustomerTest() {/// testcase 
 		
-		Customer customer= customerRepository.save(new Customer(2, "jansi","rani","jansi@gmail.com","6574432145"));
+		Customer customer= customerRepository.save(new Customer(3, "Rio","Ryan","ryan@gmail.com","7890012345"));
 		
 	
         Assertions.assertThat(customer.getCustId()).isGreaterThan(0);
@@ -58,25 +57,25 @@ public void getCustomerListTest() {
 }
 @Test
 public void updateCustomerTest() {
-	Customer customer = customerRepository.findById(2L).get();
+	Customer customer = customerRepository.findById(1L).get();
 	
-	customer.setEmail("ryan@gmail.com");
+	customer.setEmail("prik@gmail.com");
 	
 	Customer updated = customerRepository.save(customer); 
 	
 	
-	Assertions.assertThat(updated.getEmail()).isEqualTo("ryan@gmail.com");
+	Assertions.assertThat(updated.getEmail()).isEqualTo("prik@gmail.com");
 
 	
 }
 @Test 
 
 public  void deleteCustomerTest() {
-	Customer cus = customerRepository.findById(26L).get();
+	Customer cus = customerRepository.findById(25L).get();
 	customerRepository.delete(cus);
 	
 	Customer customer =null;
-	Optional<Customer> cust1 = customerRepository.findBycontactNo("7865431223");
+	Optional<Customer> cust1 = customerRepository.findBycontactNo("8907653421");
 	if(cust1.isPresent()) {
 		customer = cust1.get();// null
 	}
