@@ -108,5 +108,26 @@ public class AddressServiceImpl implements AddressService {
 
 	//	return addressRepository.findAll();
 	}
+
+
+	@Override
+	public List<Address> getAddressByCity(String city) {
+		// TODO Auto-generated method stub
+		return addressRepository.getAddressByCity(city);
+	}
+
+
+	@Override
+	public List<Address> getAddressByStreetName(String streetName) {
+		// TODO Auto-generated method stub
+		return addressRepository.getAddressByStreetName(streetName);
+	}
+
+
+	@Override
+	public List<Address> getAddressByPinCode(long pinCode) {
+		// TODO Auto-generated method stub
+		return addressRepository.getAddressByPinCode(pinCode);
+	}
 	}
 

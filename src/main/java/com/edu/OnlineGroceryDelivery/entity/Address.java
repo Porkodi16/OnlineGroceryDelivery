@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -35,10 +38,13 @@ public class Address  {
 	private long id;
 	private long houseNo;
 	@NotNull
-	@NotBlank(message="Street Name is mandatory")
+	@NotBlank(message="Street Name is Mandatory")
 	private String streetName;
+	@NotBlank(message="City is Mandatory")
 	private String city;
+	@Range(min=4 , max=9)
 	private long pinCode;
+	
 	public long getId() {
 		return id;
 	}

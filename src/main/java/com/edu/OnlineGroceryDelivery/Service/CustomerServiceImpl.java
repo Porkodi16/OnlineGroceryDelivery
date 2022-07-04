@@ -146,8 +146,25 @@ return customer;
 	}
 }
 
+@Override
+public List<Customer> getCustomerByEmail(String email) {
+	// TODO Auto-generated method stub
+			return customerRepository.getCustomerByEmail(email);
 
 }
+
+@Override
+public List<Customer> getCustomerByContactNo(String contactNo) {
+	// TODO Auto-generated method stub
+	return customerRepository.getCustomerByContactNo(contactNo);
+}
+
+
+	
+}
+
+
+
 
 
 

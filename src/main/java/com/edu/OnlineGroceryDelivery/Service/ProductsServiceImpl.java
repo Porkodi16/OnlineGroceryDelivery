@@ -119,4 +119,11 @@ public class ProductsServiceImpl implements ProductsService {
 		return productsRepository.getProductsByProductName(productName);
 	}
 
+	@Override
+	public List<Products> getProductsByProductsCategory(String productCategory) {
+		// TODO Auto-generated method stub
+		return productsRepository.getProductsByProductCategory(productCategory);
+
+	}
+
 }

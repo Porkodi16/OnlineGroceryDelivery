@@ -11,27 +11,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity(name="ProductTbl")
+@Entity(name="ProductTbl" )
 
 public class Products implements Serializable {
 	
 	@Id
 	
-	@GeneratedValue(strategy=GenerationType.AUTO)	
+	
+	@GeneratedValue(generator = "seq" , strategy = GenerationType.AUTO)
+	 @SequenceGenerator(name="seq" , initialValue = 1000)
+
 	
 	private long productId;
 	@NotNull
 	@NotBlank(message="Product Name is Mandatory")
 	private String productName;
 	private String productCategory;
+	@NotNull
+	@Range(min=20 , max=60000 , message="ProductPrice is mandatory")
 	private float productPrice;
-	@Size(min=1 , max=100)
 	private int quantity_of_Product;
 	
 	@ManyToMany(mappedBy="products" , cascade = CascadeType.REMOVE)

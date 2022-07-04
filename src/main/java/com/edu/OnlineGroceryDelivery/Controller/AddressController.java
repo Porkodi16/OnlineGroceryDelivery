@@ -68,5 +68,23 @@ public class AddressController {
 
 
 	}
+	
+	@GetMapping("/GetByCity/{city}")
+	public List<Address> getAddressByCity(@PathVariable("city") String city) {
+		return  addressService.getAddressByCity(city);
 
+
+}
+	
+	@GetMapping("/GetByStreetName/{streetName}")
+	public List<Address> getAddressByStreetName(@PathVariable("streetName") String streetName) {
+		return  addressService.getAddressByStreetName(streetName);
+
+	}
+	
+	@GetMapping("/GetByPinCode/{pinCode}")
+	public List<Address> getAddressByPinCode(@PathVariable("pinCode") long pinCode) {
+		return  addressService.getAddressByPinCode(pinCode);
+
+	}
 }

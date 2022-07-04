@@ -16,4 +16,6 @@ public interface OrderService {
 
 	String deleteOrder(long orderId);
 
+	List<Order> getOrderByPaymentMode(String paymentMode);
+
 }

@@ -5,6 +5,7 @@ package com.edu.OnlineGroceryDelivery.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,31 +13,41 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 
-@Table(name="OrderTbl")
+@Table(name="OrderTbl") 
+
+
 
 public class Order  implements Serializable {
 	
 	@Id
 	
-	@GeneratedValue(strategy=GenerationType.AUTO)	
+	
+	 @GeneratedValue(generator = "seq" , strategy = GenerationType.AUTO)
+	 @SequenceGenerator(name="seq" , initialValue = 100)
+
 
 	private long orderId;
 	private long overallTotal;
 	@NotBlank(message="PaymentMode is Mandatory")
 	private String paymentMode;
+	@Range(min = 1 , max= 100 )
 	private long productCount;
 	
 	@ManyToOne
-	@JoinColumn( name="custId")//,insertable=false,updatable=false)
+	@JoinColumn( name="custId")
 	@JsonIgnoreProperties("order")
 	private Customer customer;
 	

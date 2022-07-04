@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.OnlineGroceryDelivery.Service.OrderService;
+import com.edu.OnlineGroceryDelivery.entity.Customer;
 import com.edu.OnlineGroceryDelivery.entity.Order;
 
 @RestController
@@ -62,12 +63,16 @@ public class OrderController {
 	public ResponseEntity<String>deleteOrder(@PathVariable("orderId") long orderId) {
 		return new ResponseEntity<String> (orderService.deleteOrder(orderId),HttpStatus.OK);
 
+	}
+	
+	@GetMapping("/GetByPaymentMode/{paymentMode}")
+	public List<Order> getOrderByPaymentMode(@PathVariable("paymentMode") String paymentMode) {
+		return  orderService.getOrderByPaymentMode(paymentMode);
 
 	}
-
 }
 
-	
+
 	
 
 

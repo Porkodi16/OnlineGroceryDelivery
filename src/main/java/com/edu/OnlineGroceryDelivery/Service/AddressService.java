@@ -16,4 +16,10 @@ public interface AddressService {
 
 	String deleteAddress(long id);
 
+	List<Address> getAddressByCity(String city);
+
+	List<Address> getAddressByStreetName(String streetName);
+
+	List<Address> getAddressByPinCode(long pinCode);
+
 }

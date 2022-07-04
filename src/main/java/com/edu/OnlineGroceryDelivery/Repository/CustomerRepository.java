@@ -14,7 +14,6 @@ import com.edu.OnlineGroceryDelivery.entity.Customer;
 public interface CustomerRepository  extends JpaRepository<Customer , Long>{
 
 
-	Optional<Customer> findByEmail(String string);
 
 	Optional<Customer> findBycontactNo(String string);
 	
@@ -26,6 +25,14 @@ public interface CustomerRepository  extends JpaRepository<Customer , Long>{
 	@Query("select c from CustomerTbl c where c.lastName =:lastName")
 
 	List<Customer> getCustomerByLastName(@Param("lastName")String lastName);
+
+	@Query("select c from CustomerTbl c where c.email =:email")
+
+	List<Customer> getCustomerByEmail(@Param("email")String email);
+	
+@Query("select c from CustomerTbl c where c.contactNo =:contactNo")
+	List<Customer> getCustomerByContactNo(@Param("contactNo")String contactNo);
+
 
 
 

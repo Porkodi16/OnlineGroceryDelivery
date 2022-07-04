@@ -20,5 +20,10 @@ public interface CustomerService {
 
 	List<Customer> getCustomerByLastName(String lastName);
 
+	List<Customer> getCustomerByEmail(String email);
+
+	List<Customer> getCustomerByContactNo(String contactNo);
+
+
 
 }

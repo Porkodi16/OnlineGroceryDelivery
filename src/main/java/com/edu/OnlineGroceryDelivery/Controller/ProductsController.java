@@ -72,8 +72,13 @@ public class ProductsController {
 	public List<Products> getProductsByProductName(@PathVariable("productName")String productName) {
 		return productsService.getProductsByProductName(productName);
 	}
+	
+	@GetMapping("/GetByProductCategory/{productCategory}")
+	public List<Products> getProductsByProductCategory(@PathVariable("productCategory") String productCategory) {
+		return  productsService.getProductsByProductsCategory(productCategory);
 
 
+	}
 
 
 

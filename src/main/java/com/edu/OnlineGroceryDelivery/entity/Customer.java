@@ -2,6 +2,7 @@
 package com.edu.OnlineGroceryDelivery.entity;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,32 +23,58 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @Entity(name="CustomerTbl")
+
 
 public class Customer  {
 	
 	@Id
 	
-	@GeneratedValue(strategy=GenerationType.AUTO)	
+	//@GeneratedValue(strategy=GenerationType.AUTO)	
+
+	
+
+	
+	@GeneratedValue(generator = "seq" , strategy = GenerationType.AUTO)
+	 @SequenceGenerator(name="seq" , initialValue = 11)
+	
 	
 	
 	
 	private long custId;
 	
 	@NotNull
-	@NotBlank(message="First Name is Mandatory")
-	@Size(min=2 , max =5)
+    @NotBlank(message="First Name is Mandatory")
+	@Size(min=2 , max =10)
 	private String firstName;
 	@NotBlank(message="Last Name is Mandatory")
 	private String lastName;
-	@Column(nullable=false, unique= true)
+	@Column(nullable=false, unique= true )
 	@NotBlank(message="Email is Mandatory")
 	@Email(message="Invalid Email Id")
 	private String email;
 	@NotBlank(message="Contact Number is Mandatory")
-	@Size(min=10 , max=15)
 	private String contactNo;
 	
+	
+	@Lob
+	@Column(length =Integer.MAX_VALUE , nullable=true)
+ private byte[] profilePicture;
+	
+	
+
+
+	public byte[] getProfilePicture() {
+		return profilePicture;
+	}
+
+
+	public void setProfilePicture(byte[] profilePicture) {
+		this.profilePicture = profilePicture;
+	}
+
+
 	@OneToMany(mappedBy="customer" , cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("customer")
 	private List<Address> address;
@@ -127,7 +158,8 @@ public class Customer  {
 	@Override
 	public String toString() {
 		return "Customer [custId=" + custId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", contactNo=" + contactNo + ", address=" + address + ", order=" + order + "]";
+				+ ", contactNo=" + contactNo + ", profilePicture=" + Arrays.toString(profilePicture) + ", address="
+				+ address + ", order=" + order + "]";
 	}
 
 
@@ -138,8 +170,6 @@ public class Customer  {
 		this.lastName = lastName;
 		this.email = email;
 		this.contactNo = contactNo;
-		//this.address = d;
-		//this.order = string;
 	}
 
 
@@ -147,6 +177,22 @@ public class Customer  {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+	public Customer(long custId, String firstName, String lastName, String email, String contactNo,
+			byte[] profilePicture, List<Address> address, List<Order> order) {
+		super();
+		this.custId = custId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.profilePicture = profilePicture;
+		this.address = address;
+		this.order = order;
+	}
+	
+	
 
 	
 	

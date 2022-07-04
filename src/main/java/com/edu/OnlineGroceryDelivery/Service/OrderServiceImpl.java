@@ -102,7 +102,12 @@ public class OrderServiceImpl  implements OrderService{
 		orderRepository.deleteById(orderId);
 		return "Record is Deleted Successfully";
 	}
+
+	@Override
+	public List<Order> getOrderByPaymentMode(String paymentMode) {
+		// TODO Auto-generated method stub
+		return orderRepository .getOrderByPaymentMode(paymentMode);
 	
-	
+	}	
 
 }

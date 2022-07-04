@@ -58,7 +58,7 @@ public class CustomerController {
 	
 	@PutMapping("/{custId}")
 	
-	public  Customer updateCustomer(@PathVariable("custId") long custId , @RequestBody Customer customer) {
+	public  Customer updateCustomer( @PathVariable("custId") long custId , @Valid @RequestBody Customer customer) {
 		return customerService.updateCustomer(custId,customer);
 	}
 		
@@ -78,6 +78,18 @@ public class CustomerController {
 	public List<Customer> getCustomerByLastName(@PathVariable("lastName")String lastName) {
 		return customerService.getCustomerByLastName(lastName);
 	}
+	
+	@GetMapping("GetByEmail/{email}")
+	
+	public List<Customer> getCustomerByEmail(@PathVariable ("email") String email) {
+		return customerService.getCustomerByEmail(email);
+	}
+	
+	@GetMapping("/GetByContactNo/{contactNo}")
+	public List<Customer> getCustomerByContactNo(@PathVariable("contactNo") String contactNo) {
+		return  customerService.getCustomerByContactNo(contactNo);
+	}
+	
 
 	
 	
