@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 src/test/java/com/edu/OnlineGroceryDelivery/Repository/AddressRepositoryTest1.java
+src/main/java/com/edu/OnlineGroceryDelivery/Exception/ResourceNotFoundException.java
