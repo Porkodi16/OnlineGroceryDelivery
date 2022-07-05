@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.edu.OnlineGroceryDelivery.Exception.GivenIdNotFoundException;
 import com.edu.OnlineGroceryDelivery.Exception.NameNotFoundException;
 import com.edu.OnlineGroceryDelivery.Exception.NoRecordFoundException;
-import com.edu.OnlineGroceryDelivery.Exception.ResourceNotFoundException;
 import com.edu.OnlineGroceryDelivery.Repository.CustomerRepository;
 import com.edu.OnlineGroceryDelivery.entity.Customer;
 

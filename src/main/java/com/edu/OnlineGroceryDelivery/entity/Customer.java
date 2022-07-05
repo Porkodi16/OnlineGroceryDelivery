@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -51,6 +52,7 @@ public class Customer  {
 	@Email(message="Invalid Email Id")
 	private String email;
 	@NotBlank(message="Contact Number is Mandatory")
+	@Digits(integer=10,   fraction =0 , message="ConatctNo must be 10 digits " )
 	private String contactNo;
 	
 	
