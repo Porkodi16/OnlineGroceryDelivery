@@ -1,7 +1,6 @@
 
 package com.edu.OnlineGroceryDelivery.entity;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -50,7 +47,6 @@ public class Customer  {
 	private String firstName;
 	@NotBlank(message="Last Name is Mandatory")
 	private String lastName;
-	@Column(nullable=false, unique= true )
 	@NotBlank(message="Email is Mandatory")
 	@Email(message="Invalid Email Id")
 	private String email;

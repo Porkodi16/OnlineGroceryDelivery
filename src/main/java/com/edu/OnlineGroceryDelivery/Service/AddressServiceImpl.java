@@ -45,12 +45,6 @@ public class AddressServiceImpl implements AddressService {
 		// TODO Auto-generated method stub
 	
 		
-	/*	Address address=new Address();
-		
-		address=addressRepository.findById(custId).orElseThrow(
-				()-> new ResourceNotFoundException("Address" ,"custId",custId));
-		return address;
-	}*/
 		Optional<Address> address=addressRepository.findById(id);
 		if(address.isPresent()) {
 			return  address.get();
@@ -69,7 +63,7 @@ public class AddressServiceImpl implements AddressService {
 		Address addr=new Address();
 		
 		addr=addressRepository.findById(id).orElseThrow(
-				()-> new ResourceNotFoundException("Address" ,"id",id));
+				()-> new NoRecordFoundException());
 		
 		addr.setId(address.getId());
 		addr.setHouseNo(address.getHouseNo());
@@ -88,10 +82,10 @@ public class AddressServiceImpl implements AddressService {
 		Address address=new Address();
 		
 		address=addressRepository.findById(id).orElseThrow(
-				()-> new ResourceNotFoundException("Address" ,"id",id));
+				()-> new NoAddressFoundException());
 		
 		addressRepository.deleteById(id);
-		return "Record is Deleted Successfully";
+		return " Address Record is Deleted Successfully";
 
 		
 
@@ -109,7 +103,6 @@ public class AddressServiceImpl implements AddressService {
 		else
 			return add;
 
-	//	return addressRepository.findAll();
 	}
 
 

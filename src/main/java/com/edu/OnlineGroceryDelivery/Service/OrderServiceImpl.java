@@ -42,7 +42,6 @@ public class OrderServiceImpl  implements OrderService{
 			throw new NoRecordFoundException();
 		else
 			return ord;
-		//return orderRepository.findAll();
 
 
 	}
@@ -51,11 +50,7 @@ public class OrderServiceImpl  implements OrderService{
 	public Order getOrderById(long orderId) {
 		// TODO Auto-generated method stub
 		
-/*		Order order=new Order();
-		order =orderRepository.findById(orderId).orElseThrow (
-				() -> new ResourceNotFoundException("Order","orderId" ,orderId));
-		return order;
-	*/
+	
 		
 		Optional<Order> order=orderRepository.findById(orderId);
 		if(order.isPresent()) {
@@ -76,7 +71,7 @@ public class OrderServiceImpl  implements OrderService{
 		
 		Order ord=new Order();
 		ord=orderRepository.findById(orderId).orElseThrow (
-				() -> new ResourceNotFoundException("Order","orderId" ,orderId));
+				() -> new NoRecordFoundException());
 		
 		ord.setOrderId(order.getOrderId());
 		ord.setOverallTotal(order.getOverallTotal());
@@ -97,7 +92,7 @@ public class OrderServiceImpl  implements OrderService{
 		
 		Order order=new Order();
 		order =orderRepository.findById(orderId).orElseThrow (
-				() -> new ResourceNotFoundException("Order","orderId" ,orderId));
+				() -> new NoRecordFoundException());
 
 		orderRepository.deleteById(orderId);
 		return "Record is Deleted Successfully";

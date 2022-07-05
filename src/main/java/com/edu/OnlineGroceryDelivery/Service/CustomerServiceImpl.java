@@ -42,22 +42,12 @@ public List<Customer> getCustomerList() {
 	else
 		return custom;
 	
-	//return customerRepository.findAll();
 
 }
 
 @Override
 public Customer getCustomerById(long custId) {
 	
-	/*Customer customer=new Customer();
-	
-	customer=customerRepository.findById(custId).orElseThrow(
-			()-> new ResourceNotFoundException("Customer" ,"custId" ,custId));
-	
-	
-	return customer;
-
-}*/
 	
 	Optional<Customer> customer=customerRepository.findById(custId);
 	if(customer.isPresent()) {
@@ -78,7 +68,7 @@ public Customer updateCustomer(long custId, Customer customer) {
 	
 	Customer cust=new Customer();
 	cust=customerRepository.findById(custId).orElseThrow (
-		()-> new ResourceNotFoundException("Customer" , "custId",custId));
+		()-> new NoRecordFoundException());
 	
 	
 	
@@ -105,7 +95,7 @@ public String deleteCustomer(long custId) {
 	
 	Customer customer=new Customer();
 	customer=customerRepository.findById(custId).orElseThrow (
-			()->new ResourceNotFoundException("Customer","custId", custId));
+			()->new NoRecordFoundException());
 	
 	customerRepository.deleteById(custId);
 	return "Record is Deleted Successfully";
@@ -115,7 +105,6 @@ public String deleteCustomer(long custId) {
 @Override
 public List<Customer> getCustomerByFirstName(String firstName) {
 	// TODO Auto-generated method stub
-	//return customerRepository.getCustomerByFirstName(firstName);
 	
 	List<Customer> customer=customerRepository.getCustomerByFirstName(firstName);
 	if(customer.isEmpty())
@@ -131,7 +120,6 @@ public List<Customer> getCustomerByFirstName(String firstName) {
 @Override
 public List<Customer> getCustomerByLastName(String lastName) {
 	// TODO Auto-generated method stub
-	//return customerRepository.getCustomerByLastName(lastName);
 	
 	List<Customer> customer =customerRepository.getCustomerByLastName(lastName);
 	if(customer.isEmpty())

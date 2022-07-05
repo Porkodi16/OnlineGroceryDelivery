@@ -5,7 +5,6 @@ package com.edu.OnlineGroceryDelivery.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -36,7 +33,7 @@ public class Order  implements Serializable {
 	
 	
 	 @GeneratedValue(generator = "seq" , strategy = GenerationType.AUTO)
-	 @SequenceGenerator(name="seq" , initialValue = 100)
+	 @SequenceGenerator(name="seq1" , initialValue = 100)
 
 
 	private long orderId;

@@ -25,15 +25,15 @@ public class AddressRepositoryTest {
 	
 	
 	 @Test
-	 public void saveAddressTest() {
-	 		
-	 		Address address = addressRepository.save(new Address( 20,10120,"West Street","Mumbai",500987));
-	 		
-	 	
-	         Assertions.assertThat(address.getId()).isGreaterThan(0);
-	         // if id is greater than 0 
-	     	
-	     }
+	 
+	 
+	 public  void saveAddressTest() {
+		 
+		 Address address = addressRepository.save(new Address ( 33,5230, "NewYork Street","Hosur",657890));
+		 
+		 Assertions.assertThat(address.getId()).isGreaterThan(0);
+	 }
+	
 	 
 	 
 	 @Test
@@ -73,11 +73,11 @@ public class AddressRepositoryTest {
 		@Test
 
 		public void deleteAddressTest() {
-			Address addre = addressRepository.findById(14L).get();
+			Address addre = addressRepository.findById(19L).get();
 			addressRepository.delete(addre);
 			
 			Address address =null;
-			Optional<Address> add1 = addressRepository.findByHouseNo(999);
+			Optional<Address> add1 = addressRepository.findByHouseNo(563);
 			if(add1.isPresent()) {
 				address = add1.get();// null
 			}

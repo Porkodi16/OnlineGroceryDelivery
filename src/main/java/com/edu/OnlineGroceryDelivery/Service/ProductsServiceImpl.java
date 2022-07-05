@@ -41,15 +41,6 @@ public class ProductsServiceImpl implements ProductsService {
 	@Override
 	public Products getProductsById(long productId) {
 		// TODO Auto-generated method stub
-		
-	/*	Products products=new Products();
-		
-		products=productsRepository.findById(productId).orElseThrow(
-				()-> new ResourceNotFoundException("Products" ,"productId" ,productId));
-		
-		
-		return products;
-*/
 		Optional<Products> products=productsRepository.findById(productId);
 		if(products.isPresent()) {
 			return  products.get();
@@ -75,7 +66,6 @@ public class ProductsServiceImpl implements ProductsService {
 		else
 			return prod;
 
-		//return productsRepository.findAll();
 	}
 
 	@Override
@@ -84,7 +74,7 @@ public class ProductsServiceImpl implements ProductsService {
 		
 		Products pro=new Products ();
 		pro=productsRepository.findById(productId).orElseThrow (
-			()-> new ResourceNotFoundException("Products" , "productId",productId));
+			()-> new NoRecordFoundException());
 		
 		pro.setProductId(products.getProductId());
 		pro.setProductName(products.getProductName());
@@ -104,12 +94,12 @@ public class ProductsServiceImpl implements ProductsService {
 		Products products = new Products();
 		
 		products=productsRepository.findById(productId).orElseThrow(
-				()-> new ResourceNotFoundException("Products" ,"productId" ,productId));
+				()-> new NoProductsFoundException());
 
 		
 		
 		productsRepository.deleteById(productId);
-		return "Record is Deleted Successfully";
+		return " Product Record is Deleted Successfully";
 
 	}
 
