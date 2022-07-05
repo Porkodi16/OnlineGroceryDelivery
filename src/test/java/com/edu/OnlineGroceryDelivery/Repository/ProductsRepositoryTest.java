@@ -76,11 +76,11 @@ public void updateProductsTest() {
 @Test
 
 public void deleteProductsTest() {
-	Products prod= productsRepository.findById(89L).get();
+	Products prod= productsRepository.findById(212L).get();
 	productsRepository.delete(prod);
 	
 	Products products =null;
-	Optional<Products> pr1 = productsRepository.findByProductName("Cherry");
+	Optional<Products> pr1 = productsRepository.findByProductName("Carrot");
 
 	if(pr1.isPresent()) {
 		products = pr1.get();// null

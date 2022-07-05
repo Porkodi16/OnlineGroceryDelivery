@@ -76,11 +76,11 @@ public void updateOrderTest() {
  @Test 
 
 public  void deleteOrderTest() {
-	Order orde = orderRepository.findById(81L).get();
+	Order orde = orderRepository.findById(79L).get();
 	orderRepository.delete(orde);
 	
 	Order order =null;
-	Optional<Order> orde1 = orderRepository.findByPaymentMode("Prepaid Cards");
+	Optional<Order> orde1 = orderRepository.findByPaymentMode("Debit Card");
 	if(orde1.isPresent()) {
 		order = orde1.get();// null
 	}

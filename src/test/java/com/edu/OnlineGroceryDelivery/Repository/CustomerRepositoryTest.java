@@ -71,18 +71,19 @@ public void updateCustomerTest() {
 @Test 
 
 public  void deleteCustomerTest() {
-	Customer cus = customerRepository.findById(25L).get();
+	Customer cus = customerRepository.findById(11L).get();
 	customerRepository.delete(cus);
 	
 	Customer customer =null;
-	Optional<Customer> cust1 = customerRepository.findBycontactNo("8907653421");
+	Optional<Customer> cust1 = customerRepository.findByEmail("parish@gmail.com");
 	if(cust1.isPresent()) {
 		customer = cust1.get();// null
-	}
+	
 	
 	Assertions.assertThat(customer).isNull();
 	
 
 
+}
 }
 }

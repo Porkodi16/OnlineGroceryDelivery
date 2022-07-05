@@ -60,7 +60,7 @@ public class Customer  {
 	
 	@Lob
 	@Column(length =Integer.MAX_VALUE , nullable=true)
- private byte[] profilePicture;
+    private byte[] profilePicture;
 	
 	
 

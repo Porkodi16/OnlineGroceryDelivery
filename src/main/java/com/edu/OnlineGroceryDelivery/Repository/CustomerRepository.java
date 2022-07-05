@@ -33,6 +33,8 @@ public interface CustomerRepository  extends JpaRepository<Customer , Long>{
 @Query("select c from CustomerTbl c where c.contactNo =:contactNo")
 	List<Customer> getCustomerByContactNo(@Param("contactNo")String contactNo);
 
+Optional<Customer> findByEmail(String string);
+
 
 
 
