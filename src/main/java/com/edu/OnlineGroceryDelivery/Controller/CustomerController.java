@@ -91,11 +91,6 @@ public class CustomerController {
 		return  customerService.getCustomerByContactNo(contactNo);
 	}
 	
-	/*@GetMapping("/GetCustomerByOrderId/{orderId}")
-	public List<Customer> getCustomerByOrderId(@PathVariable("orderId") long orderId) {
-		return customerService.getCustomerByOrderId(orderId);
-	}
-*/
 	}
 	
 

@@ -34,8 +34,6 @@ public interface CustomerRepository  extends JpaRepository<Customer , Long>{
 	List<Customer> getCustomerByContactNo(@Param("contactNo")String contactNo);
 
 
-  /*  @Query("select c from CustomerTbl c where order.orderId =:orderId")
-    List<Customer> getCustomerByOrderId(@Param("orderId")long orderId);*/
     
     Optional<Customer> findByEmail(String string);
 

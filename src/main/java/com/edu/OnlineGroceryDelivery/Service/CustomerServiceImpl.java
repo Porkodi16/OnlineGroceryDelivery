@@ -152,12 +152,6 @@ public List<Customer> getCustomerByContactNo(String contactNo) {
 }
 
 
-/*@Override
-public List<Customer> getCustomerByOrderId(long orderId) {
-	// TODO Auto-generated method stub
-	return customerRepository.getCustomerByOrderId(orderId);
-}
-*/
 
 	
 }
