@@ -25,10 +25,6 @@ public class Address  {
 	
 
 	
-	@ManyToOne
-	@JoinColumn(name="custId") 
-		@JsonIgnoreProperties("address")
-	private Customer customer;
 	
 	@Id
 	
@@ -38,8 +34,19 @@ public class Address  {
 	@NotBlank(message="Street Name is Mandatory")
 	private String streetName;
 	@NotBlank(message="City is Mandatory")
-	private String city;
+	private String city;	
 	private long pinCode;
+	
+	
+	
+	@ManyToOne
+	@JoinColumn(name="custId") 
+	@JsonIgnoreProperties("address")
+   private Customer customer;
+
+	
+	
+	
 	
 	public long getId() {
 		return id;
@@ -102,6 +109,12 @@ public class Address  {
 		this.streetName = streetName;
 		this.city = city;
 		this.pinCode = pinCode;
+	}
+	public Address(long id, long houseNo, @NotBlank(message = "City is Mandatory") String city) {
+		super();
+		this.id = id;
+		this.houseNo = houseNo;
+		this.city = city;
 	}
 	
 	

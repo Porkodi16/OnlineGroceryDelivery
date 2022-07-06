@@ -147,6 +147,17 @@ public class Order  implements Serializable {
 		this.products = products;
 	}
 
+
+	public Order(long orderId, long overallTotal, @NotBlank(message = "PaymentMode is Mandatory") String paymentMode) {
+		super();
+		this.orderId = orderId;
+		this.overallTotal = overallTotal;
+		this.paymentMode = paymentMode;
+	}
+	
+	
+	
+
 }
 	
 

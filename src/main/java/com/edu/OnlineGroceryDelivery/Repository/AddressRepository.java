@@ -27,6 +27,10 @@ public interface AddressRepository extends JpaRepository <Address , Long> {
 
 		List<Address> getAddressByPinCode(@Param("pinCode")long pinCode);
 
+		
+		@Query ("select a.city , count(a.id) from Address a group by a.city")
+		List<Object[]> getAddressGroupByCity();
+
 
 
 

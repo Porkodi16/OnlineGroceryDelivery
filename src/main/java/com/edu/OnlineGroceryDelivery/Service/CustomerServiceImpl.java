@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.edu.OnlineGroceryDelivery.Exception.GivenIdNotFoundException;
 import com.edu.OnlineGroceryDelivery.Exception.NameNotFoundException;
 import com.edu.OnlineGroceryDelivery.Exception.NoRecordFoundException;
+import com.edu.OnlineGroceryDelivery.Exception.RecordAlreadyExistException;
 import com.edu.OnlineGroceryDelivery.Repository.CustomerRepository;
 import com.edu.OnlineGroceryDelivery.entity.Customer;
 
@@ -28,7 +29,11 @@ public CustomerServiceImpl(CustomerRepository customerRepository) {
 
 @Override
 public Customer saveCustomer(Customer customer) {
+	Optional<Customer> cus=customerRepository.findById(customer.getCustId());
+	if(!cus.isPresent())
 	return customerRepository.save(customer);
+	else
+		throw new RecordAlreadyExistException();
 }
 
 @Override
@@ -146,6 +151,13 @@ public List<Customer> getCustomerByContactNo(String contactNo) {
 	return customerRepository.getCustomerByContactNo(contactNo);
 }
 
+
+/*@Override
+public List<Customer> getCustomerByOrderId(long orderId) {
+	// TODO Auto-generated method stub
+	return customerRepository.getCustomerByOrderId(orderId);
+}
+*/
 
 	
 }

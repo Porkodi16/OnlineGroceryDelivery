@@ -25,5 +25,8 @@ public interface CustomerService {
 	List<Customer> getCustomerByContactNo(String contactNo);
 
 
+	/*List<Customer> getCustomerByOrderId(long orderId);*/
+
+
 
 }

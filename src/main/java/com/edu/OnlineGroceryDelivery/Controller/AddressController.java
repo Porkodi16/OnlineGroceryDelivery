@@ -2,6 +2,7 @@
 package com.edu.OnlineGroceryDelivery.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -87,4 +88,10 @@ public class AddressController {
 		return  addressService.getAddressByPinCode(pinCode);
 
 	}
-}
+	
+	@GetMapping("/GetAddressGroupByCity")
+	public ResponseEntity<Map<Object , Object>> getAddressGroupByCity () {
+		return new ResponseEntity<Map<Object , Object>>(addressService.getAddressGroupByCity(), HttpStatus.OK);
+	}
+	}
+

@@ -56,23 +56,8 @@ public class Customer  {
 	private String contactNo;
 	
 	
-	@Lob
-	@Column(length =Integer.MAX_VALUE , nullable=true)
-    private byte[] profilePicture;
 	
 	
-
-
-	public byte[] getProfilePicture() {
-		return profilePicture;
-	}
-
-
-	public void setProfilePicture(byte[] profilePicture) {
-		this.profilePicture = profilePicture;
-	}
-
-
 	@OneToMany(mappedBy="customer" , cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("customer")
 	private List<Address> address;
@@ -81,6 +66,8 @@ public class Customer  {
 	@OneToMany(mappedBy="customer" , cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("customer")
 	private List<Order>order;
+
+
 
 
 	public long getCustId() {
@@ -156,8 +143,7 @@ public class Customer  {
 	@Override
 	public String toString() {
 		return "Customer [custId=" + custId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", contactNo=" + contactNo + ", profilePicture=" + Arrays.toString(profilePicture) + ", address="
-				+ address + ", order=" + order + "]";
+				+ ", contactNo=" + contactNo + ",  address=" + address + ", order=" + order + "]";
 	}
 
 
@@ -178,16 +164,26 @@ public class Customer  {
 
 
 	public Customer(long custId, String firstName, String lastName, String email, String contactNo,
-			byte[] profilePicture, List<Address> address, List<Order> order) {
+			 List<Address> address, List<Order> order) {
 		super();
 		this.custId = custId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.contactNo = contactNo;
-		this.profilePicture = profilePicture;
 		this.address = address;
 		this.order = order;
+	}
+
+
+
+	public Customer(long custId,
+			@NotNull @NotBlank(message = "First Name is Mandatory") @Size(min = 2, max = 10) String firstName,
+			@NotBlank(message = "Email is Mandatory") @Email(message = "Invalid Email Id") String email) {
+		super();
+		this.custId = custId;
+		this.firstName = firstName;
+		this.email = email;
 	}
 	
 	

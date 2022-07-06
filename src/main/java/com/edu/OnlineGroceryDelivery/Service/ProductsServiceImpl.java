@@ -33,7 +33,13 @@ public class ProductsServiceImpl implements ProductsService {
 	@Override
 	public Products saveProducts(Products products) {
 		// TODO Auto-generated method stub
+		Optional<Products> pro=productsRepository.findById(products.getProductId());
+		if(!pro.isPresent())
 		return productsRepository.save(products);
+		else
+			throw new RecordAlreadyExistException();
+
+		//return productsRepository.save(products);
 
 		
 	}

@@ -30,6 +30,26 @@ public class GlobalExceptionHandlers {
 			@ExceptionHandler(NoAddressFoundException.class)
 			public ResponseEntity<Object> handleNoAddressFoundException()  {
 				return new ResponseEntity<Object> ("Given Address Is Not Available" , HttpStatus.NOT_FOUND);
+				
+				
+			}
+			
+			@ExceptionHandler(RecordAlreadyExistException.class)
+			
+			public ResponseEntity<Object> handleRecordAlreadyExistException()  {
+				return new ResponseEntity<Object> ("Record is Already Exist" , HttpStatus.FOUND);
+
+			}
+			
+			@ExceptionHandler(NoSuchRecordFoundException.class)
+			
+			public ResponseEntity<Object> handleNoSuchRecordFoundException()  {
+				return new ResponseEntity<Object> ("No Such Record is Available" , HttpStatus.FOUND);
+
+			
+				
+				
+				
 			
 	}
 			

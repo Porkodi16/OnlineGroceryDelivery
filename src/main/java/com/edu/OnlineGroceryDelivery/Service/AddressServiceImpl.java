@@ -1,14 +1,15 @@
 
 package com.edu.OnlineGroceryDelivery.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.OnlineGroceryDelivery.Exception.*;
-import com.edu.OnlineGroceryDelivery.Repository.AddressRepository;
 import com.edu.OnlineGroceryDelivery.Repository.AddressRepository;
 import com.edu.OnlineGroceryDelivery.entity.Address;
 import com.edu.OnlineGroceryDelivery.entity.Customer;
@@ -36,7 +37,14 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public Address saveAddress(Address address) {
 		// TODO Auto-generated method stub
+		Optional<Address> add=addressRepository.findById(address.getId());
+		if(!add.isPresent())
 		return addressRepository.save(address);
+		else
+			throw new RecordAlreadyExistException();
+
+		
+		
 	}
 
 	
@@ -125,5 +133,20 @@ public class AddressServiceImpl implements AddressService {
 		// TODO Auto-generated method stub
 		return addressRepository.getAddressByPinCode(pinCode);
 	}
+
+
+	@Override
+	public Map<Object, Object> getAddressGroupByCity() {
+				List<Object[]> objects =  addressRepository.getAddressGroupByCity();
+				
+				Map<Object, Object> map = new HashMap<>();
+				
+				for(Object[] obj : objects) {
+					map.put(obj[0], obj[1]);
+				}
+				return map;
+			}
+
+		
 	}
 

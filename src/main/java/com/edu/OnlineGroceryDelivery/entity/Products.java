@@ -125,6 +125,17 @@ public class Products implements Serializable {
 		this.quantity_of_Product = quantity_of_Product;
 		this.order = order;
 	}
+
+	public Products(long productId, @NotNull @NotBlank(message = "Product Name is Mandatory") String productName,
+			int quantity_of_Product) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.quantity_of_Product = quantity_of_Product;
+	}
+
+	
+	
 	
 	
 }

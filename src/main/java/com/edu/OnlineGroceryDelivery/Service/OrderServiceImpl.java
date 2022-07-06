@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.edu.OnlineGroceryDelivery.Exception.*;
 import com.edu.OnlineGroceryDelivery.Repository.OrderRepository;
+import com.edu.OnlineGroceryDelivery.entity.Customer;
 import com.edu.OnlineGroceryDelivery.entity.Order;
 
 @Service
@@ -30,7 +31,13 @@ public class OrderServiceImpl  implements OrderService{
 	public Order saveOrder(Order order) {
 		// TODO Auto-generated method stub
 		
+		Optional<Order> or=orderRepository.findById(order.getOrderId());
+		if(!or.isPresent())
 		return orderRepository.save(order);
+		else
+			throw new RecordAlreadyExistException();
+
+		
 	}
 
 	@Override
