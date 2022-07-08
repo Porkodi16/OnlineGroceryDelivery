@@ -28,7 +28,7 @@ public class Products implements Serializable {
 	
 	
 	@GeneratedValue(generator = "seq" , strategy = GenerationType.AUTO)
-	 @SequenceGenerator(name="seq2" , initialValue = 1000)
+	 @SequenceGenerator(name="seq2" , initialValue = 202)
 
 	
 	private long productId;

@@ -33,7 +33,7 @@ public class Order  implements Serializable {
 	
 	
 	 @GeneratedValue(generator = "seq" , strategy = GenerationType.AUTO)
-	 @SequenceGenerator(name="seq1" , initialValue = 100)
+	 @SequenceGenerator(name="seq1" , initialValue = 152)
 
 
 	private long orderId;

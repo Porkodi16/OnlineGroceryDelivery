@@ -29,13 +29,10 @@ public class Customer  {
 	
 	@Id
 	
-	//@GeneratedValue(strategy=GenerationType.AUTO)	
-
-	
 
 	
 	@GeneratedValue(generator = "seq" , strategy = GenerationType.AUTO)
-	 @SequenceGenerator(name="seq" , initialValue = 11)
+	 @SequenceGenerator(name="seq" , initialValue = 101)
 	
 	
 	
@@ -52,7 +49,7 @@ public class Customer  {
 	@Email(message="Invalid Email Id")
 	private String email;
 	@NotBlank(message="Contact Number is Mandatory")
-	@Digits(integer=10,   fraction =0 , message="ConatctNo must be 10 digits " )
+	@Size(min=10,   max=10, message="ConatctNo must be 10 digits " )
 	private String contactNo;
 	
 	
