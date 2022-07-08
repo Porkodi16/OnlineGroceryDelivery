@@ -33,11 +33,6 @@ public class CustomerController {
 	
 	
 
-	
-	public CustomerController(CustomerService customerService) {
-		super();
-		this.customerService = customerService;
-	}
 
 	@PostMapping
 	

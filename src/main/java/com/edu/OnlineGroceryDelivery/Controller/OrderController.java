@@ -29,10 +29,6 @@ public class OrderController {
 	
 	OrderService orderService;
 
-	public OrderController(OrderService orderService) {
-		super();
-		this.orderService = orderService;
-	}
 	
 	@PostMapping
 	

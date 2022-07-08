@@ -33,10 +33,7 @@ public class AddressController {
 	
 	AddressService addressService;
 
-	public AddressController(AddressService addressService) {
-		super();
-		this.addressService = addressService;
-	}
+	
 	
 	@PostMapping
 	

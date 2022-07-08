@@ -33,10 +33,6 @@ public class ProductsController {
 
 	
 
-	public ProductsController(ProductsService productsService) {
-		super();
-		this.productsService = productsService;
-	}
 
 	@PostMapping
 	
