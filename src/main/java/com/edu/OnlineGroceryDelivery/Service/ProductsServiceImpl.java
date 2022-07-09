@@ -20,15 +20,9 @@ public class ProductsServiceImpl implements ProductsService {
 	@Autowired
 	
 	ProductsRepository productsRepository;
-	
-	
 
 
 
-	public ProductsServiceImpl(ProductsRepository productsRepository) {
-		super();
-		this.productsRepository = productsRepository;
-	}
 
 	@Override
 	public Products saveProducts(Products products) {

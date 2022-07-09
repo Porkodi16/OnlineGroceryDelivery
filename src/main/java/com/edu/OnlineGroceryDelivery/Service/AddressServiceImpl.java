@@ -21,17 +21,8 @@ public class AddressServiceImpl implements AddressService {
 	@Autowired
 	
 	AddressRepository addressRepository;
-	
-	
-	
 
 
-
-
-	public AddressServiceImpl(AddressRepository addressRepository) {
-		super();
-		this.addressRepository = addressRepository;
-	}
 
 
 	@Override

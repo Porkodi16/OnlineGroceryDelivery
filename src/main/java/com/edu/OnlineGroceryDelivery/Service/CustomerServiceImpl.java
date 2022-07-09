@@ -20,12 +20,6 @@ public class CustomerServiceImpl implements CustomerService {
 	CustomerRepository customerRepository;
 	
 	
-	
-
-public CustomerServiceImpl(CustomerRepository customerRepository) {
-		super();
-		this.customerRepository = customerRepository;
-	}
 
 @Override
 public Customer saveCustomer(Customer customer) {

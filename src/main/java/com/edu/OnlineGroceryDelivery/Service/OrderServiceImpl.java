@@ -22,11 +22,6 @@ public class OrderServiceImpl  implements OrderService{
 	
 
 
-	public OrderServiceImpl(OrderRepository orderRepository) {
-		super();
-		this.orderRepository = orderRepository;
-	}
-
 	@Override
 	public Order saveOrder(Order order) {
 		// TODO Auto-generated method stub
